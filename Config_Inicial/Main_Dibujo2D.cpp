@@ -121,12 +121,12 @@ int main() {
 
 
         glPointSize(10);
-        glDrawArrays(GL_POINTS,0,4);
+        //glDrawArrays(GL_POINTS,0,4);
         
         //glDrawArrays(GL_LINES,0,2);
         //glDrawArrays(GL_LINE_LOOP,0,4);
         
-        //glDrawArrays(GL_TRIANGLES,0,3);
+        glDrawArrays(GL_TRIANGLES,0,3);
         //glDrawElements(GL_TRIANGLES, 3,GL_UNSIGNED_INT,0);
 
         
