@@ -130,13 +130,13 @@ int main() {
 
 	GLuint VBO, VAO;
 	glGenVertexArrays(1, &VAO);
-	//glGenBuffers(1, &VBO);
+	glGenBuffers(1, &VBO);
 	//glGenBuffers(1, &EBO);
 
 	// Enlazar  Vertex Array Object
 	glBindVertexArray(VAO);
 
-	//2.- Copiamos nuestros arreglo de vertices en un buffer de vertices para que OpenGL lo use
+	//2.- Copiamos nuestros arreglo d e vertices en un buffer de vertices para que OpenGL lo use
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	// 3.Copiamos nuestro arreglo de indices en  un elemento del buffer para que OpenGL lo use
@@ -197,12 +197,42 @@ int main() {
 
 		glBindVertexArray(VAO);
 	
-	    model = glm::mat4(1.0f);
+	    model = glm::mat4(1.0f); 
+		model = glm::scale(model, glm::vec3(3.0f, 0.1f, 2.0f)); // ancho grosor y profundidad
+		model = glm::translate(model, glm::vec3(0.0f, 0.6f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-		glBindVertexArray(0);
+		
+		//Pata 1
+		model = glm::mat4(1.0f);
+		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); // ancho grosor y profundidad
+		model = glm::translate(model, glm::vec3(2.9f, -0.6f, 1.9f)); // Posicion de la pata
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-				
+
+		//Pata 2
+		model = glm::mat4(1.0f);
+		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); // ancho grosor y profundidad
+		model = glm::translate(model, glm::vec3(-2.9f, -0.6f, 1.9f)); // Posicion de la pata
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//Pata 3
+		model = glm::mat4(1.0f);
+		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); // ancho grosor y profundidad
+		model = glm::translate(model, glm::vec3(-2.9f, -0.6f, -1.9f)); // Posicion de la pata
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//Pata 4
+		model = glm::mat4(1.0f);
+		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); // ancho grosor y profundidad
+		model = glm::translate(model, glm::vec3(2.9f, -0.6f, -1.9f)); // Posicion de la pata
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		glBindVertexArray(0);
 
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
